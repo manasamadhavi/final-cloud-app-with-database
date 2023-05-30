@@ -128,7 +128,7 @@ class Question(models.Model):
     # Other fields and methods you would like to design
 class Choice(models.Model):
     question = models.ManyToManyField(Question)
-    choice = models.CharField(max_length = 10)
+    choice_text = models.CharField(max_length = 20, default= "None")
     c_w = models.BooleanField(default = False)
 
 # <HINT> The submission model

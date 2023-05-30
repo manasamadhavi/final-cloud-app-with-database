@@ -50,18 +50,25 @@
                     </div>
                 {% endfor %}
             </div>
+            <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#exam">Exam</button>
+            <div id="exam" class="collapse">
+                {% for question in course.question_set.all %}
+                <div>
+                    <p>{{q_text}}</p>
+                    {% for choice in course.choice_set.all %}
+                        <input type="checkbox" id="{{choice.id}}" name="choice_{{choice.id}}">
+                        <label for="{{choice.id}}">{{choice_text}}</label><br>
+                    {% endfor %} 
+                </div>
+                {% endfor %}
+            </div>
+
             <!-- Task: show questions and choices -->
             <!-- <HINT> Use Bootstrap Collapse to hide exam first, more details could be found here
             https://www.w3schools.com/bootstrap4/bootstrap_collapse.asp-->
 
-            <!--
-
-            A collapse example here:
-            <div id="exam" class="collapse">
-                Click to expand elements within the collapse div
-                </div>
-
-            -->
+    
+   
 
             <!-- <HINT> If user is authenticated, show course exam with a list of question -->
 
@@ -75,7 +82,7 @@
             <input type="check" name="choice_{{choice.id}}" id="{{choice.id}}" ...>
             -->
 
-            <!-- A choice submission form example
+          
             <form id="questionform" action="point to a submit view" method="post">
                         ... for each question in the course ...
                         <div class="card mt-1">
@@ -93,7 +100,7 @@
                             </div>
                         </div>
                     <input class="btn btn-success btn-block" type="submit" value="Submit">
-            </form> -->
+            </form> 
 
             <!--Check here to see more details Bootstrap checkbox
              https://www.w3schools.com/bootstrap4/bootstrap_forms_inputs.asp-->
