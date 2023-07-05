@@ -5,15 +5,15 @@ from .models import Course, Lesson, Instructor, Learner, Question, Choice
 # <HINT> Register QuestionInline and ChoiceInline classes here
 class ChoiceInline(admin.StackedInline):
     model = Choice
-    extra = 4
+    extra = 3
 
 class QuestionInline(admin.StackedInline):
     model = Question
-    extra = 10
+    extra = 3
 
 class LessonInline(admin.StackedInline):
     model = Lesson
-    extra = 5
+    extra = 3
 
 
 # Register your models here.
@@ -28,12 +28,6 @@ class LessonAdmin(admin.ModelAdmin):
     inlines = [QuestionInline]
     list_display = ['title']
 
-class QuestionAdmin(admin.ModelAdmin):
-    inlines = [ChoiceInline]
-    list_display = ['q_text']
-
-class choiceAdmin(admin.ModelAdmin):
-    list_display = ['choice']
 
 
 # <HINT> Register Question and Choice models here

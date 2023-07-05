@@ -129,7 +129,7 @@ class Question(models.Model):
 class Choice(models.Model):
     question = models.ManyToManyField(Question)
     choice_text = models.CharField(max_length = 20, default= "None")
-    c_w = models.BooleanField(default = False)
+    is_correct = models.BooleanField(default = False)
 
 # <HINT> The submission model
 # One enrollment could have multiple submission
