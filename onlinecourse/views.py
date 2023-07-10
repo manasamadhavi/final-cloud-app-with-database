@@ -141,11 +141,13 @@ def show_exam_result(request, course_id, submission_id):
     course = get_object_or_404(Course, pk=course_id)
     submission = get_object_or_404(submission, pk=submission_id)
     total_score = 0
-    choice_ids = get_object_or_404(submission.submitted_anwsers)
-    for choice in choice_ids:
+    selected_ids = get_object_or_404(submission.submitted_anwsers)
+    for choice in selected_ids:
         if choice.is_correct == True:
-            total_score = total_score + choice.question.q_grade_mark 
-    context = super(course,selected_ids, grade)
+            total_score = total_score + choice.question.q_grade_mark
+    total = sum(course.question.q_grade_mark) 
+    grade = (total_score/total)*100
+    context = super(course,selected_ids, total_score)
 
 
 
