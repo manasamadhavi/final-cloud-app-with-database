@@ -75,7 +75,7 @@
             -->
 
           
-            <form id="questionform" action={% url 'onlinecourse:login' %} method="post">
+            <form id="questionform" action={% url 'onlinecourse:submit' course.id %} method="post">
                         {%for question in course.question_set.all %}
                           <div class="card mt-1">
                             <div class="card-header"><h5>{{ question.q_text}}</h5></div>
