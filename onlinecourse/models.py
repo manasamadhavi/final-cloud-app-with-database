@@ -112,13 +112,12 @@ class Question(models.Model):
     
     # <HINT> A sample model method to calculate if learner get the score of the question
     def is_get_score(self, selected_ids):
-        all_answers = self.choice_set.filter(is_correct=True).count()
+        answers = self.choice_set.filter(is_correct=True).count()
         selected_correct = self.choice_set.filter(is_correct=True, id__in=selected_ids).count()
-        if all_answers == selected_correct:
+        if answers == selected_correct:
             return True
         else:
             return False
-
 
 #  <HINT> Create a Choice Model with:
     # Used to persist choice content for a question
@@ -128,6 +127,7 @@ class Question(models.Model):
     # Other fields and methods you would like to design
 class Choice(models.Model):
     question = models.ManyToManyField(Question)
+    Course = models.ManyToManyField(Course)
     choice_text = models.CharField(max_length = 20, default= "None")
     is_correct = models.BooleanField(default = False)
 
