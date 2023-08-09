@@ -119,6 +119,9 @@ class Question(models.Model):
         else:
             return False
 
+    def __str__(self):
+        return "(Q): " + self.q_text
+
 #  <HINT> Create a Choice Model with:
     # Used to persist choice content for a question
     # One-To-Many (or Many-To-Many if you want to reuse choices) relationship with Question
@@ -130,6 +133,9 @@ class Choice(models.Model):
     Course = models.ManyToManyField(Course)
     choice_text = models.CharField(max_length = 20, default= "None")
     is_correct = models.BooleanField(default = False)
+
+    def __str__(self):
+        return self.choice_text
 
 # <HINT> The submission model
 # One enrollment could have multiple submission
